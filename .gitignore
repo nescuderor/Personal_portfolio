@@ -1,5 +1,6 @@
 #Folders and files to ignore in git
 portfolio_env/
+Databases/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
