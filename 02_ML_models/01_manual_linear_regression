@@ -1,0 +1,34 @@
+'''
+The goal for this script is to perform a linear regression using solely the most basic functions from python,
+via numpy, while integrating the train/test split.
+
+The results of this script can be validated against the results in https://ufal.mff.cuni.cz/courses/npfl129/2425-winter#assignments:~:text=publish%20your%20solutions.-,linear_regression_manual,-Deadline%3A%20Oct%2014
+'''
+#Base libraries
+import numpy as np
+import sklearn.datasets
+import sklearn.model_selection
+
+#Global variables
+SEED = 42
+TEST_SIZE = 0.1 #Proportion for test split
+
+#Unpacking the dataset
+dataset = sklearn.datasets.load_diabetes()
+data = dataset.data
+targets = dataset.target
+
+#Adding constant term for the bias
+data = np.hstack([data, np.ones((data.shape[0], 1))])
+
+#Performing test-validation split
+x_train, x_test, y_train, y_test = sklearn.model_selection.train_test_split(data, targets, test_size=TEST_SIZE, random_state=SEED)
+
+#Computing the linear regression
+w = np.linalg.inv((x_train.T @ x_train)) @ (x_train.T @ y_train)
+#Forecasting
+y_estim = x_test @ w
+
+#Computing the RMSE
+rmse = (sum((y_estim - y_test)**2)/y_test.shape[0])**(1/2)
+print(rmse)
