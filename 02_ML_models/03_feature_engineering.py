@@ -77,13 +77,13 @@ def create_features(database):
     )
 
     # Define the polynomial feature generation step.
-    polinomial_transform = sklearn.preprocessing.PolynomialFeatures(degree=2, include_bias=False)
+    polynomial_transform = sklearn.preprocessing.PolynomialFeatures(degree=2, include_bias=False)
 
     # Chain the column transformations and polynomial feature generation together.
     pipe = sklearn.pipeline.Pipeline(
         steps=[
             ('process_columns', column_transform),
-            ('add_polinomial', polinomial_transform)
+            ('add_polynomial', polynomial_transform)
         ]
     )
 
