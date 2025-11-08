@@ -1,51 +1,76 @@
 '''
-The goal for this script is to perform a linear regression via scikit-learn via its linear_model module.
-And additional factor, it tries to demonstrate the development of basic features.
+Title: Polynomial Regression with Scikit-Learn
 
-The results of this script can be validated against the results in linear_regression_features
+Description:
+This script demonstrates how to perform polynomial regression by incrementally adding features
+to a scikit-learn `LinearRegression` model. It visualizes how the model fit improves and
+how the Root Mean Squared Error (RMSE) changes as the complexity of the polynomial increases.
+
+The core idea is to start with a simple linear model (order 1) and progressively add
+higher-order polynomial features (x^2, x^3, etc.) in a loop. For each order, the script:
+1. Creates the new polynomial feature.
+2. Splits the data into training and testing sets.
+3. Fits a linear regression model on the expanded feature set.
+4. Calculates the RMSE on the test set.
+5. Plots the resulting model fit against the training and test data.
+
+This process effectively shows the trade-off between model complexity and its ability to fit the data,
+providing a practical look at the concept of overfitting.
+
+The results of this script can be validated against the results in https://ufal.mff.cuni.cz/courses/npfl129/2425-winter#assignments:~:text=the%20test%20set.-,linear_regression_features,-Deadline%3A%20Oct%2014
 '''
-#Base libraries
+# Base libraries
 import numpy as np
 import sklearn.linear_model
 import sklearn.model_selection
 import matplotlib.pyplot as plt
 
 
-#Global variables
-SIZE = 40
-RANGE = 3
-SEED = 42
-TEST_SIZE = 0.5
-PLOT = True
+# --- Global Variables ---
+# Configuration parameters for the experiment.
+SIZE = 40      # Number of data points to generate.
+RANGE = 3      # The maximum polynomial order to test.
+SEED = 42      # Random seed for reproducibility.
+TEST_SIZE = 0.5# Proportion of the data to use for the test set.
+PLOT = True    # Flag to control whether plots are generated.
 
-#Defining a random noisy data
+# --- Data Generation ---
+# Define a simple, non-linear dataset to model.
+# A sine wave is used with some random noise to simulate real-world data.
 xs = np.linspace(0, 7, num=SIZE)
 ys = np.sin(xs) + np.random.RandomState(SEED).normal(0, 0.2, size=SIZE)
 
-#Basic setting for plotting
+# --- Plotting Setup ---
+# Prepare a grid of subplots to display the results for each polynomial order.
 if PLOT is True:
     nrows = int(np.ceil(RANGE/3))
     ncols = 3
-    fig, axs = plt.subplots(nrows=nrows, ncols=ncols)
+    fig, axs = plt.subplots(nrows=nrows, ncols=ncols, figsize=(15, 4 * nrows))
 
-#Creation of features and estimation of the model
+# --- Feature Creation, Model Training, and Evaluation Loop ---
 rmses = []
+# The `incremental` array will store the polynomial features (x, x^2, x^3, ...).
 incremental = np.empty([SIZE, 1], dtype='float64')
+
 for order in range(1, RANGE+1):
+    # Add the next polynomial feature to the feature matrix.
     if order == 1:
         incremental[:, order-1] = xs
     else:
         incremental = np.hstack([incremental, xs.reshape(-1, 1)**order])
 
-    #Generating training/test split:
+    # Split the data into training and test sets for the current feature set.
     train_xs, test_xs, train_ys, test_ys = sklearn.model_selection.train_test_split(incremental, ys, test_size=TEST_SIZE, random_state=SEED)
 
-    #Fitting the model:
+    # Fit a linear regression model on the training data.
     model = sklearn.linear_model.LinearRegression(fit_intercept= True).fit(train_xs, train_ys)
+
+    # Make predictions and calculate the RMSE on the test set.
     prediction = model.predict(test_xs)
     rmse = (sum((prediction - test_ys)**2)/test_ys.shape[0])**(1/2)
     rmses.append(rmse)
 
+    # --- Plotting Results for the Current Order ---
     if PLOT is True:
         try:
             axs.shape[1]
@@ -82,9 +107,12 @@ for order in range(1, RANGE+1):
             ax.set_title(f"Polynomial Order {order}")
             ax.legend()
 
+# --- Final Output ---
+# Display the plots and print the list of RMSE values.
 if PLOT is True:
+    plt.tight_layout()
     plt.show()
-print(rmses)
+print(f"RMSEs for orders 1 to {RANGE}: {rmses}")
 
 
 
