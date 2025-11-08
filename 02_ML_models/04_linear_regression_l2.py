@@ -50,7 +50,7 @@ x_train, x_test, y_train, y_test = sklearn.model_selection.train_test_split(data
 # np.geomspace is used to create values spaced evenly on a log scale.
 lambdas = np.geomspace(0.01, 10, num=500)
 
-#Doing a manual gridsearch for tunning the lambda parameter
+# Doing a manual gridsearch for tuning the lambda parameter
 rmses = []
 for lambda_value in lambdas:
     model = sklearn.linear_model.Ridge(alpha=lambda_value)
