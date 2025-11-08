@@ -39,11 +39,6 @@ dataset = getattr(sklearn.datasets, "load_{}".format(DATABASE))()
 
 x_train, x_test = sklearn.model_selection.train_test_split(dataset.data, test_size=TEST_SIZE, random_state=SEED)
 
-#Global variables
-DATABASE = "diabetes"
-SEED = 42
-TEST_SIZE = 0.5
-
 #Determining the pipeline for the type of data
 def create_features(database):
     """
