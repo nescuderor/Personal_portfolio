@@ -203,6 +203,7 @@ Personal_portfolio/
 │   ├── 02_linear_regression.py           # Polynomial regression
 │   ├── 03_feature_engineering.py         # ML pipelines
 │   ├── 04_linear_regression_l2.py        # Ridge regression
+│   ├── 05_linear_regression_sgd.py        # Linear regression with SGD
 │   └── requirements.txt                  # Dependencies
 │
 └── README.md               # This file
