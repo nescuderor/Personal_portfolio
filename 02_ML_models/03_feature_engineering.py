@@ -39,7 +39,7 @@ dataset = getattr(sklearn.datasets, "load_{}".format(DATABASE))()
 
 x_train, x_test = sklearn.model_selection.train_test_split(dataset.data, test_size=TEST_SIZE, random_state=SEED)
 
-#Determining the pipeline for the type of data
+# Determining the pipeline for the type of data
 def create_features(database):
     """
     Builds and applies a feature engineering pipeline to a given dataset.

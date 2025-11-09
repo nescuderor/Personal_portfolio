@@ -24,7 +24,7 @@ weights to minimize the Mean Squared Error (MSE) loss function. The process is a
 7.  Finally, it compares the result to a standard scikit-learn Linear Regression
     model and plots the learning curves.
 
-The results of this script can be validated against the results in https://ufal.mff.cuni.cz/courses/npfl129/2425-winter#assignments:~:text=every%20such%20configuration.-,linear_regression_l2,-Deadline%3A%20Oct%2021
+The results of this script can be validated against the results in https://ufal.mff.cuni.cz/courses/npfl129/2425-winter#assignments:~:text=best%20of%20them.-,linear_regression_sgd,-Deadline%3A%20Oct%2021
 '''
 # --- Base libraries ---
 import numpy as np
