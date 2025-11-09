@@ -132,6 +132,16 @@ Systematic approach to Ridge Regression regularization:
 
 **Insight Demonstrated**: Understanding that model complexity must be balanced with generalization.
 
+#### **05_linear_regression_sgd.py** - Mini-Batch Stochastic Gradient Descent
+Implementation of linear regression using mini-batch SGD:
+
+- **SGD Optimization from Scratch**: Custom implementation of the stochastic gradient descent algorithm for linear regression, without relying on external ML libraries.
+- **Mini-Batch Processing**: Efficient training using randomly sampled mini-batches, enabling scalable learning on larger datasets.
+- **Weight Update Mechanism**: Iterative parameter updates based on mini-batch gradients, demonstrating understanding of optimization dynamics.
+- **L2 Regularization Integration**: Incorporates Ridge-style penalty to control model complexity and prevent overfitting.
+- **Learning Curve Visualization**: Plots training and validation RMSE over epochs to illustrate convergence and generalization.
+
+**Key Strength**: Shows ability to implement core ML optimization techniques and analyze their performance.
 ---
 
 ## 🛠️ Technologies Used
