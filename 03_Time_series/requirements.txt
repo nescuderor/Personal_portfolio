@@ -1,0 +1,13 @@
+jupyter
+jinja2
+numpy
+pandas
+statsmodels
+scipy
+matplotlib
+seaborn
+requests
+yfinance
+scikit-learn
+missingno
+skforecast
