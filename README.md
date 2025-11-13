@@ -9,6 +9,7 @@ Welcome to my data science portfolio! This repository showcases my expertise in 
 - [Projects Overview](#projects-overview)
   - [01: Python Fundamentals & Data Analysis](#01-python-fundamentals--data-analysis)
   - [02: Machine Learning Models](#02-machine-learning-models)
+  - [03: Time Series Analysis & Forecasting](#03-time-series-analysis--forecasting)
 - [Technologies Used](#technologies-used)
 - [Contact](#contact)
 
@@ -22,7 +23,9 @@ This portfolio demonstrates my proficiency in data science through hands-on impl
 - **Scientific Computing**: NumPy for vectorized operations and linear algebra
 - **Data Manipulation**: Pandas for data transformation, aggregation, and relational operations
 - **Machine Learning**: Regression models, regularization, feature engineering, hyperparameter tuning
-- **Data Visualization**: Matplotlib for exploratory data analysis and results presentation
+- **Time Series Analysis**: Stationarity testing, ARMA/ARIMA models, financial data preprocessing
+- **Advanced Forecasting**: ML-based forecasting, recursive prediction, backtesting frameworks
+- **Data Visualization**: Matplotlib and Seaborn for exploratory data analysis and results presentation
 - **Mathematical Foundations**: Linear algebra, calculus, and statistics applied to ML algorithms
 - **Software Engineering**: Clean code, comprehensive documentation, modular design
 
@@ -142,6 +145,78 @@ Implementation of linear regression using mini-batch SGD:
 - **Learning Curve Visualization**: Plots training and validation RMSE over epochs to illustrate convergence and generalization.
 
 **Key Strength**: Shows ability to implement core ML optimization techniques and analyze their performance.
+
+---
+
+### 03: Time Series Analysis & Forecasting
+
+Advanced time series modeling combining statistical methods with machine learning techniques for financial forecasting applications.
+
+#### **01_arma_models.ipynb** - Statistical Time Series Modeling
+Comprehensive ARMA analysis of Apple stock returns:
+
+- **Data Preparation**:
+  - Financial data acquisition via yfinance
+  - Business day frequency handling and holiday treatment
+  - Log returns transformation for stationarity
+- **Stationarity Analysis**:
+  - Augmented Dickey-Fuller (ADF) test implementation
+  - KPSS test for trend stationarity
+  - Jarque-Bera normality testing
+  - ACF/PACF visualization and interpretation
+- **Model Selection**:
+  - Grid search across AR and MA orders using scipy.optimize.brute
+  - Information criteria comparison (AIC, BIC, HQIC)
+  - Optimal ARMA specification selection
+- **Forecasting & Validation**:
+  - Rolling window forecasting
+  - Out-of-sample performance evaluation
+  - Residual diagnostics (Ljung-Box test, normality checks)
+- **Statistical Rigor**: Demonstrates understanding of time series assumptions and diagnostic testing
+
+**Key Concepts**: Stationarity, autocorrelation structure, model parsimony, residual analysis
+
+#### **02_decision_tree.ipynb** - ML-Based Financial Forecasting
+Machine learning approach to time series forecasting with Google stock data:
+
+- **Advanced Data Engineering**:
+  - Business day indexing with proper holiday handling (forward-fill methodology)
+  - Economic rationale for treating market closures
+  - Comprehensive missing data analysis
+- **Statistical Foundation**:
+  - Multi-test stationarity verification (ADF + KPSS)
+  - Distribution analysis and normality assessment
+  - Autocorrelation significance testing (Ljung-Box)
+- **Dual Modeling Approach**:
+  - **Statistical Baseline**: ARMA(0,0,1) model for benchmark comparison
+  - **ML Forecaster**: Decision Tree Regressor with recursive prediction
+- **Hyperparameter Optimization**:
+  - Systematic grid search across lag structures (1-30 lags)
+  - Tree complexity tuning (criterion, max_depth)
+  - Time series cross-validation with expanding windows
+  - Performance-driven parameter selection
+- **Rigorous Validation**:
+  - 80-20 train-test split with temporal ordering
+  - Rolling window backtesting on last 3 months
+  - Refit strategy for adapting to recent data
+  - RMSE comparison between statistical and ML approaches
+- **Feature Analysis**:
+  - Feature importance identification
+  - Optimal lag structure interpretation
+  - Economic insight into predictive patterns
+- **Production-Ready Implementation**:
+  - skforecast library integration
+  - Backtesting framework for realistic performance assessment
+  - Clear visualization of predictions vs. actuals
+
+**Key Strengths**:
+- Bridges statistical and ML forecasting paradigms
+- Demonstrates understanding of financial time series properties
+- Rigorous out-of-sample validation methodology
+- Economic reasoning combined with technical implementation
+
+**Practical Insights**: Shows ability to evaluate when ML methods outperform traditional statistical approaches and how to properly validate time series models.
+
 ---
 
 ## 🛠️ Technologies Used
@@ -150,9 +225,12 @@ Implementation of linear regression using mini-batch SGD:
 - **Python 3.x**: Primary programming language
 - **NumPy**: Numerical computing and linear algebra
 - **Pandas**: Data manipulation and analysis
-- **Matplotlib**: Data visualization and plotting
+- **Matplotlib & Seaborn**: Data visualization and plotting
 - **Scikit-learn**: Machine learning algorithms and utilities
 - **SciPy**: Statistical functions and advanced mathematics
+- **Statsmodels**: Time series analysis and statistical modeling
+- **skforecast**: Specialized forecasting library with backtesting capabilities
+- **yfinance**: Financial data retrieval
 
 ### Development Tools
 - **Jupyter Notebooks**: Interactive development and documentation
@@ -162,8 +240,11 @@ Implementation of linear regression using mini-batch SGD:
 ### Skills Demonstrated
 - Mathematical modeling and algorithm implementation
 - Statistical analysis and hypothesis testing
+- Time series analysis and stationarity testing
+- Financial data preprocessing and transformation
 - Data preprocessing and feature engineering
 - Model evaluation and validation
+- Backtesting and cross-validation strategies
 - Code documentation and software engineering best practices
 
 ---
@@ -187,6 +268,10 @@ Implementation of linear regression using mini-batch SGD:
 - ✅ Hyperparameter optimization with systematic grid search
 - ✅ Multi-table relational data analysis
 - ✅ Object-oriented design patterns in Python
+- ✅ Time series stationarity testing and transformation
+- ✅ ARMA model selection with information criteria optimization
+- ✅ ML-based forecasting with recursive prediction
+- ✅ Rolling window backtesting for financial time series
 
 ---
 
@@ -213,7 +298,12 @@ Personal_portfolio/
 │   ├── 02_linear_regression.py           # Polynomial regression
 │   ├── 03_feature_engineering.py         # ML pipelines
 │   ├── 04_linear_regression_l2.py        # Ridge regression
-│   ├── 05_linear_regression_sgd.py        # Linear regression with SGD
+│   ├── 05_linear_regression_sgd.py       # Linear regression with SGD
+│   └── requirements.txt                  # Dependencies
+│
+├── 03_Time_series/         # Time series analysis and forecasting
+│   ├── 01_arma_models.ipynb              # Statistical ARMA modeling
+│   ├── 02_decision_tree.ipynb            # ML-based forecasting
 │   └── requirements.txt                  # Dependencies
 │
 └── README.md               # This file
