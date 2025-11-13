@@ -9,3 +9,5 @@ seaborn
 requests
 yfinance
 scikit-learn
+missingno
+skforecast
