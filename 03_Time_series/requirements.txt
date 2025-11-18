@@ -11,3 +11,4 @@ yfinance
 scikit-learn
 missingno
 skforecast
+alpha_vantage
