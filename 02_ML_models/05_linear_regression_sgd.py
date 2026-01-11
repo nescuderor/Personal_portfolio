@@ -50,7 +50,7 @@ data, target = sklearn.datasets.make_regression(n_samples=DATA_SIZE, random_stat
 generator = np.random.RandomState(SEED) # Base generator for reproducible random values.
 
 # Add a constant column of 1s to the feature matrix to act as the bias (intercept) term.
-data = np.pad(data, ((0, 0), (0,1)), mode='constant', constant_values=1)
+data = np.pad(data, ((0, 0), (0, 1)), mode='constant', constant_values=1)
 target = target.reshape(-1, 1)
 
 # Creating the train-test split for model training and evaluation.
