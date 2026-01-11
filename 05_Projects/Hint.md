@@ -1,6 +1,6 @@
-# Creating classes for developing customised transformers for sklearn.
+# Creating classes for developing customized transformers for sklearn.
 
-One of the ways to develop a customised transformer compatible with sklearn framework is via the construction of customised classes. Within them, it is necessary to guarantee the methods `.fit()`, `.transform()`, and `.fit_transform()`. In addition, it is recommended to also create the method `.inverse_transform()` to restore the original values, if needed.
+One of the ways to develop a customized transformer compatible with sklearn framework is via the construction of customized classes. Within them, it is necessary to guarantee the methods `.fit()`, `.transform()`, and `.fit_transform()`. In addition, it is recommended to also create the method `.inverse_transform()` to restore the original values, if needed.
 
 
 ```python

@@ -24,7 +24,7 @@ weights to minimize the Mean Squared Error (MSE) loss function. The process is a
 7.  Finally, it compares the result to a standard scikit-learn Linear Regression
     model and plots the learning curves.
 
-The results of this script can be validated against the results in https://ufal.mff.cuni.cz/courses/npfl129/2425-winter#assignments:~:text=every%20such%20configuration.-,linear_regression_l2,-Deadline%3A%20Oct%2021
+The results of this script can be validated against the results in https://ufal.mff.cuni.cz/courses/npfl129/2425-winter#assignments:~:text=every%20such%20configuration.-,linear_regression_sgd,-Deadline%3A%20Oct%2021
 '''
 # --- Base libraries ---
 import numpy as np
@@ -50,7 +50,7 @@ data, target = sklearn.datasets.make_regression(n_samples=DATA_SIZE, random_stat
 generator = np.random.RandomState(SEED) # Base generator for reproducible random values.
 
 # Add a constant column of 1s to the feature matrix to act as the bias (intercept) term.
-data = np.pad(data, ((0, 0), (0,1)), mode='constant', constant_values=1)
+data = np.pad(data, ((0, 0), (0, 1)), mode='constant', constant_values=1)
 target = target.reshape(-1, 1)
 
 # Creating the train-test split for model training and evaluation.
