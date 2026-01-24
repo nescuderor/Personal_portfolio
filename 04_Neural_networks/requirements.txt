@@ -1,0 +1,14 @@
+##### Core packages
+jupyter
+jinja2
+matplotlib
+seaborn
+numpy
+missingno
+pandas
+scipy
+scikit-learn
+xgboost
+transformers
+statsmodels
+tensorflow

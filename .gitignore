@@ -2,5 +2,6 @@
 02_ML_models/.ml_env/*
 03_Time_series/.ts_env/*
 03_Time_series/api_keys/*
+04_Neural_networks/.nn_env/*
 05_Projects/.projects_env/*
 05_Projects/models/*
