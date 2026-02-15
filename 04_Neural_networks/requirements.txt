@@ -12,3 +12,4 @@ xgboost
 transformers
 statsmodels
 tensorflow
+keras-tuner
